@@ -1,0 +1,51 @@
+/* login.css */
+
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 3rem;
+  background-color: #68bd52; /* Pure white background for a clean look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  border-radius: 10px; /* Slightly more rounded corners */
+  font-family: 'Arial', sans-serif; /* Modern font */
+}
+
+.login-container a,
+.login-container .btn-primary,
+.login-container .btn-link {
+  color: #3498db; /* Softer blue for links */
+}
+
+.login-container a:hover,
+.login-container .btn-primary:hover,
+.login-container .btn-link:hover {
+  text-decoration: underline;
+  color: #2980b9; /* Darker blue on hover */
+}
+
+.login-container p {
+  margin-bottom: 1.5rem; /* Further increased spacing for readability */
+  font-size: 1.1rem; /* Slightly larger font size */
+  color: #555; /* Darker text for better readability */
+}
+
+.login-container .btn-primary {
+  background-color: #e67e22; /* Bright orange button */
+  color: #fff; /* White text color for contrast */
+  padding: 15px 30px; /* Increased button padding for comfort */
+  border: none; /* No border for a cleaner look */
+  border-radius: 10px; /* Rounded corners for a softer appearance */
+  cursor: pointer; /* Indicates clickable button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.login-container .btn-primary:hover {
+  background-color: #d35400; /* Darker orange on hover */
+}
+
+.login-container .btn-link {
+  color: #3498db; /* Softer blue for links */
+  text-decoration: none; /* No underline */
+  font-size: 1rem; /* Standard link font size */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
