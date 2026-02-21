@@ -131,7 +131,7 @@ function sizeByCredibility(cred) {
 
   async function getWaterloggingReports() {
     try {
-      const response = await fetch("${import.meta.env.VITE_API_URL}/api/waterlogging/all");
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/waterlogging/all');
       const data = await response.json();
       setWaterloggingReports(data);
     } catch (e) { console.error("Reports fetch error:", e); }
@@ -156,7 +156,7 @@ function sizeByCredibility(cred) {
   ) => {
     try {
       const user_id = localStorage.getItem("user_id");
-      const response = await fetch("${import.meta.env.VITE_API_URL}/api/user/history", {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/user/history', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -190,7 +190,7 @@ function sizeByCredibility(cred) {
   ) => {
     try {
       const user_id = localStorage.getItem("user_id");
-      const response = await fetch("${import.meta.env.VITE_API_URL}/api/user/favourite", {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/user/favourite', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -240,7 +240,7 @@ function sizeByCredibility(cred) {
   useEffect(() => {
     const fetchDangerZones = async () => {
       try {
-        const response = await fetch("${import.meta.env.VITE_API_URL}/api/waterlogging/all");
+        const response = await fetch('${import.meta.env.VITE_API_URL}/api/waterlogging/all');
         const data = await response.json();
         // শুধুমাত্র 'heavy' বা 'manhole' যুক্ত রিপোর্টগুলো ফিল্টার করে রাখা ভালো
         const filteredZones = data.filter(r => 
@@ -267,7 +267,7 @@ const token = localStorage.getItem("token");
 
 async function fetchPredictions() {
   try {
-    const res = await fetch("${import.meta.env.VITE_API_URL}/api/predictions");
+    const res = await fetch('${import.meta.env.VITE_API_URL}/api/predictions');
     const data = await res.json();
     console.log("Predictions response:", data); // ✅ check here
     setPredictions(data);
@@ -357,7 +357,7 @@ const MapClickEvent = () => {
 const handleIncidentSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch("${import.meta.env.VITE_API_URL}/api/waterlogging/report", {
+    const response = await fetch('${import.meta.env.VITE_API_URL}/api/waterlogging/report', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -557,7 +557,7 @@ const deleteAreaReport = async (id) => {
 const submitAreaReport = async () => {
   try {
     const user_id = localStorage.getItem("user_id");
-    const response = await fetch("${import.meta.env.VITE_API_URL}/api/waterlogging/report-area", {
+    const response = await fetch('${import.meta.env.VITE_API_URL}/api/waterlogging/report-area', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -572,7 +572,7 @@ const submitAreaReport = async () => {
     console.log("Area report submitted:", data);
 
     // fetch all reports again after submission
-    fetch("${import.meta.env.VITE_API_URL}/api/waterlogging/reports")
+    fetch('${import.meta.env.VITE_API_URL}/api/waterlogging/reports')
       .then(res => res.json())
       .then(rows => setReports(rows));
 
@@ -600,7 +600,7 @@ const [description, setDescription] = useState("");
 
   const addToWaterloggingReport = async (lat, lng, severity, description, date) => {
   try {
-    const response = await fetch("${import.meta.env.VITE_API_URL}/api/waterlogging/report", {
+    const response = await fetch('${import.meta.env.VITE_API_URL}/api/waterlogging/report', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ lat, lng, severity, description, date })

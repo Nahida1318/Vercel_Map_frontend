@@ -95,7 +95,7 @@ function UserInterface() {
   const handleIncidentSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch("${import.meta.env.VITE_API_URL}/api/waterlogging/report", {
+    const response = await fetch('${import.meta.env.VITE_API_URL}/api/waterlogging/report', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(incident),
