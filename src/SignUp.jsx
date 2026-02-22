@@ -41,7 +41,7 @@ function SignUp() {
             return;
         }
         try {
-            const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/user/signup`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

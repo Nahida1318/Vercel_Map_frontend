@@ -43,7 +43,7 @@ function UserInterface() {
     try {
       const user_id = localStorage.getItem("user_id");
       const response = await fetch(
-        `https://eruditely-unpostmarked-shala.ngrok-free.dev/api/user/user/${user_id}`,{
+        `${import.meta.env.VITE_API_URL}/api/user/user/${user_id}`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -62,7 +62,7 @@ function UserInterface() {
       const user_id = localStorage.getItem("user_id");
       console.log("this is user_id " + user_id);
       const response = await fetch(
-        `https://eruditely-unpostmarked-shala.ngrok-free.dev/api/user/favourite/${user_id}`,{
+        `${import.meta.env.VITE_API_URL}/api/user/favourite/${user_id}`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -79,7 +79,7 @@ function UserInterface() {
     try {
       const user_id = localStorage.getItem("user_id");
       const response = await fetch(
-        `https://eruditely-unpostmarked-shala.ngrok-free.dev/api/user/history/${user_id}`,{
+        `${import.meta.env.VITE_API_URL}/api/user/history/${user_id}`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -107,7 +107,7 @@ function UserInterface() {
   const handleIncidentSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/report`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/report`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(incident),
@@ -136,7 +136,7 @@ function UserInterface() {
   const fetchUserReports = async () => {
   try {
     const user_id = localStorage.getItem("user_id");
-    const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/user/${user_id}`,{
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/user/${user_id}`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -186,7 +186,7 @@ const [userReports, setUserReports] = useState([]);
     try {
       const user_id = localStorage.getItem("user_id");
       const response = await fetch(
-        `https://eruditely-unpostmarked-shala.ngrok-free.dev/api/user/rating/${user_id}`,
+        `${import.meta.env.VITE_API_URL}/api/user/rating/${user_id}`,
         {
           method: "POST",
           headers: {

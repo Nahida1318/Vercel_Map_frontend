@@ -131,7 +131,7 @@ function sizeByCredibility(cred) {
 
   async function getWaterloggingReports() {
     try {
-      const response = await fetch("https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/all", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/all`, {
         headers: {
           "ngrok-skip-browser-warning": "true"
         }
@@ -160,7 +160,7 @@ function sizeByCredibility(cred) {
   ) => {
     try {
       const user_id = localStorage.getItem("user_id");
-      const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/user/history`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/history`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -194,7 +194,7 @@ function sizeByCredibility(cred) {
   ) => {
     try {
       const user_id = localStorage.getItem("user_id");
-      const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/user/favourite`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/favourite`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -244,7 +244,7 @@ function sizeByCredibility(cred) {
   useEffect(() => {
     const fetchDangerZones = async () => {
       try {
-        const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/all`,{
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/all`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -292,7 +292,7 @@ const token = localStorage.getItem("token");
 
 async function fetchPredictions() {
   try {
-    const res = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/predictions`,{
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/predictions`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -386,7 +386,7 @@ const MapClickEvent = () => {
 const handleIncidentSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/report`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/report`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -490,7 +490,7 @@ const handleIncidentSubmit = async (e) => {
 
 const sendFeedback = async (id, type) => {
   try {
-    const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/feedback/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/feedback/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -520,7 +520,7 @@ const sendFeedback = async (id, type) => {
     const token = localStorage.getItem("token");
 
     // ✅ Capture the fetch result
-    const res = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/report/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/report/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -555,7 +555,7 @@ const deleteAreaReport = async (id) => {
       return;
     }
 
-    const res = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/area/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/area/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -586,7 +586,7 @@ const deleteAreaReport = async (id) => {
 const submitAreaReport = async () => {
   try {
     const user_id = localStorage.getItem("user_id");
-    const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/report-area`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/report-area`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -601,7 +601,7 @@ const submitAreaReport = async () => {
     console.log("Area report submitted:", data);
 
     // fetch all reports again after submission
-    fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/reports`,{
+    fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/reports`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -617,7 +617,7 @@ const submitAreaReport = async () => {
 
 
   useEffect(() => {
-    fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/reports`,{
+    fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/reports`,{
     headers: {
       "ngrok-skip-browser-warning": "true"
     }
@@ -637,7 +637,7 @@ const [description, setDescription] = useState("");
 
   const addToWaterloggingReport = async (lat, lng, severity, description, date) => {
   try {
-    const response = await fetch(`https://eruditely-unpostmarked-shala.ngrok-free.dev/api/waterlogging/report`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waterlogging/report`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ lat, lng, severity, description, date })
