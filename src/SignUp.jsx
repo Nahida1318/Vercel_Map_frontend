@@ -46,7 +46,7 @@ function SignUp() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password, role: "admin" }), // ✅ add role here
+                body: JSON.stringify({ email, password, role: "user" }), // ✅ add role here
             }); 
 
             const data = await response.json();

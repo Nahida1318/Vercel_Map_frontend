@@ -37,6 +37,7 @@ function UserInterface() {
     fetchUserData();
     fetchUserFavourites();
     fetchUserHistory();
+    fetchUserCredibility();
   }, []);
 
   const fetchUserData = async () => {
@@ -130,6 +131,27 @@ function UserInterface() {
   }
 };
 
+const [credibility, setCredibility] = useState(0);
+
+const fetchUserCredibility = async () => {
+  try {
+    const user_id = localStorage.getItem("user_id");
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/user/credibility/${user_id}`, {
+        headers: { "ngrok-skip-browser-warning": "true" }
+      }
+    );
+    const data = await response.json();
+    setCredibility(data.credibility);
+    // Map score ranges to titles 
+    if (credibility <= 10) setTitle("New Reporter");
+    else if (credibility <= 50) setTitle("Active Reporter");
+    else if (credibility <= 100) setTitle("Trusted Reporter");
+    else setTitle("Expert Reporter");
+  } catch (error) {
+    console.error("Error fetching credibility:", error);
+  }
+};
 
 
 
@@ -154,7 +176,7 @@ function UserInterface() {
 
 const [userReports, setUserReports] = useState([]);
 
-
+const [title, setTitle] = useState("New Reporter");
 
 
 
@@ -248,13 +270,9 @@ const [userReports, setUserReports] = useState([]);
         <button onClick={() => setViewProfile(!viewProfile)}>
           View Profile
         </button>
-        {/* <button onClick={() => setUpdateProfile(!updateProfile)}> */}
-        {/* Update Profile */}
-        {/* </button> */}
         <button onClick={() => setShowFavourites(!showFavourites)}>
           View Favourites
         </button>
-        {/* <button onClick={addFavourite}>Add Favourites</button> */}
         <button onClick={() => setShowHistory(!showHistory)}>
           View History
         </button>
@@ -262,14 +280,15 @@ const [userReports, setUserReports] = useState([]);
         <button onClick={redirectToMapBody}>Go to Map</button>
       </div>
 
-      {viewProfile && (
-        <div className="profile">
-          <h2>Profile</h2>
-          {/* <p>Name: {profile.name}</p> */}
-          <p>Email: {user.email}</p>
-          {/* <p>Personal Info: {profile.personalInfo}</p> */}
-        </div>
-      )}
+    {viewProfile && (
+  <div className="profile">
+    <h2>Profile</h2>
+    <p>Email: {user.email}</p>
+          <p>Credibility Score: {credibility}</p>
+          <p>Status: {title}</p>
+  </div>
+)}
+
 
 
 
@@ -329,7 +348,7 @@ const [userReports, setUserReports] = useState([]);
       )}
 
 
-      <div className="rating">
+      {/* <div className="rating">
         <h2>Rating</h2>
         <div className="stars">
           {[1, 2, 3, 4, 5].map((star) => (
@@ -343,6 +362,10 @@ const [userReports, setUserReports] = useState([]);
           ))}
         </div>
       </div>
+ */}
+
+
+
     </div>
   );
 }

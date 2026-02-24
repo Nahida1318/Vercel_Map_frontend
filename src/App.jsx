@@ -30,10 +30,11 @@ function App() {
   }, []);
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       {/* <MapBody/> */}
 
-      {!isAuthenticated ? <LogIn /> : <div></div>}
+      {/* {!isAuthenticated ? <LogIn /> : <div></div>} */}
+       {!isAuthenticated && <LogIn />}
 
       <Routes>
         <Route exact path="/" element={<MapBody />} />
@@ -42,7 +43,7 @@ function App() {
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/userinterface" element={<UserInterface />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
