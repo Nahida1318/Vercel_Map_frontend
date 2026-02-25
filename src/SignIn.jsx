@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from "react-router-dom";
-import './signin.css';
+import './styles/signin.css';
 import { isValidEmail, isValidPassword } from './validation'; // Import the validation functions
 import './UserInterface';
 import './SignUp';
@@ -72,7 +72,7 @@ function SignIn() {
             {/* <p className="text-center">or:</p> */}
             {error && <p className="text-center text-danger">{error}</p>}
 
-            <label className="form-label" htmlFor="loginName">Email or username</label>
+            <label className="form-label" htmlFor="loginName">Email </label>
             <div className="form-outline mb-4">
                 <input
                     type="email"

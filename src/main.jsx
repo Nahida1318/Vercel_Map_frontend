@@ -9,7 +9,7 @@ import "leaflet-draw/dist/leaflet.draw.css";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter> {/* Wrap your app with BrowserRouter */}
+    <BrowserRouter> 
       <App />
     </BrowserRouter>
   </React.StrictMode>

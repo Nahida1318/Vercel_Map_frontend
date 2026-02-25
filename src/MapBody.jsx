@@ -98,8 +98,6 @@ const [polygon, setPolygon] = useState([]);
 
 
 
-// const [reports, setReports] = useState([]);
-
 const [role, setRole] = useState(null);
 
 useEffect(() => {
@@ -253,15 +251,13 @@ function sizeByCredibility(cred) {
 
         const data = await response.json();
 
-        const reportsArray = data.result;   // 👈 VERY IMPORTANT
+        const reportsArray = data.result;  
 
         const filteredZones = reportsArray.filter(r =>
         r.severity === 'heavy' || r.severity === 'manhole_open'
         );
 
         setDangerZones(filteredZones);
-
-
 
 
 
@@ -465,7 +461,7 @@ const handleIncidentSubmit = async (e) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         setCenter([lat, lng]);
-        const isAuthenticatedUser = localStorage.getItem("user_id"); // Assuming you store a token upon successful login
+        const isAuthenticatedUser = localStorage.getItem("user_id"); // Assuming store a token upon successful login
         setIsAuthenticated(isAuthenticatedUser ? true : false);
       },
       (error) => {
@@ -636,7 +632,7 @@ const deleteAreaReport = async (id) => {
   }
 };
 
-  // http://192.168.34.62:5001/api/waterlogging/report
+
   
 
 
@@ -699,16 +695,6 @@ const submitAreaReport = async (e) => {
     console.error("Error submitting area report:", err);
   }
 };
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1154,28 +1140,6 @@ useEffect(() => {
     </FeatureGroup>
   )}
 
-  {/* ✅ 3. Road predictions */}
-  {/* {Array.isArray(predictions) && predictions.map((road, idx) => (
-    <Polyline
-      key={idx}
-      positions={road.geometry.map(coord => [coord[1], coord[0]])}
-      color={road.predictions.some(p => p.occurrence === 1) ? "red" : "green"}
-      weight={5}
-    >
-      <Popup>
-        <strong>{road.road_name}</strong><br />
-        {road.predictions.map((p, i) => (
-          <div key={i}>
-            {p.month}: Occurrence {p.occurrence}, Duration {p.duration.toFixed(1)} hrs
-          </div>
-        ))}
-      </Popup>
-    </Polyline>
-  ))}
-
-
-         */}
-
 
 
 
@@ -1220,8 +1184,8 @@ useEffect(() => {
           <thead>
             <tr style={{ background: "#f0f0f0" }}>
               <th style={{ padding: "3px 8px", textAlign: "left"   }}>Month</th>
-              <th style={{ padding: "3px 8px", textAlign: "center" }}>Flood Days</th>
-              <th style={{ padding: "3px 8px", textAlign: "center" }}>Avg Duration</th>
+              <th style={{ padding: "3px 8px", textAlign: "center" }}>Rainy Days</th>
+              <th style={{ padding: "3px 8px", textAlign: "center" }}>Avg waterlogging Duration</th>
             </tr>
           </thead>
           <tbody>
@@ -1242,23 +1206,6 @@ useEffect(() => {
     </Polyline>
   );
 })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

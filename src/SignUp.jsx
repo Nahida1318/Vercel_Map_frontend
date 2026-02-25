@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from "react-router-dom";
-import './signup.css';
+import './styles/signup.css';
 import { isValidEmail, isValidPassword } from './validation'; // Import the validation functions
 import './UserInterface';
 

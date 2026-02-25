@@ -1,4 +1,4 @@
-// validation.js
+
 
 export const isValidEmail = (email) => {
     // Basic email validation regex

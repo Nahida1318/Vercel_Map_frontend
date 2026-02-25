@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom"; // Import the Link component
 import './styles/Index.css';
-import './login.css';
+import './styles/login.css';
 
 
 

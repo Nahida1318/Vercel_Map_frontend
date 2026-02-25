@@ -7,7 +7,6 @@ import "./MapBody";
 function UserInterface() {
   const location = useLocation();
 
-  // const hst = useHistory();
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
@@ -142,11 +141,15 @@ const fetchUserCredibility = async () => {
       }
     );
     const data = await response.json();
-    setCredibility(data.credibility);
-    // Map score ranges to titles 
-    if (credibility <= 10) setTitle("New Reporter");
-    else if (credibility <= 50) setTitle("Active Reporter");
-    else if (credibility <= 100) setTitle("Trusted Reporter");
+    
+
+    // const score = data.credibility;
+    const score = Number(data.credibility);
+    setCredibility(score);
+
+    if (score <= 5) setTitle("New Reporter");
+    else if (score <= 10) setTitle("Active Reporter");
+    else if (score <= 15) setTitle("Trusted Reporter");
     else setTitle("Expert Reporter");
   } catch (error) {
     console.error("Error fetching credibility:", error);
@@ -281,7 +284,7 @@ const [title, setTitle] = useState("New Reporter");
         <button onClick={redirectToMapBody}>Go to Map</button>
       </div>
 
-    {viewProfile && (
+    {user &&viewProfile && (
   <div className="profile">
     <h2>Profile</h2>
     <p>Email: {user.email}</p>
@@ -347,25 +350,6 @@ const [title, setTitle] = useState("New Reporter");
           </ul>
         </div>
       )}
-
-
-      {/* <div className="rating">
-        <h2>Rating</h2>
-        <div className="stars">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              className={star <= rating ? "filled" : ""}
-              onClick={() => handleRatingChange(star)}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-      </div>
- */}
-
-
 
     </div>
   );
